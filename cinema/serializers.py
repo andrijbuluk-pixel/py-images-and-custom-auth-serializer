@@ -56,6 +56,19 @@ class MovieImageSerializer(MovieSerializer):
         read_only_fields = ("id", "title")
 
 
+class MovieCreateSerializer(MovieSerializer):
+    class Meta:
+        model = Movie
+        fields = (
+            "id",
+            "title",
+            "description",
+            "duration",
+            "genres",
+            "actors",
+        )
+
+
 class MovieListSerializer(MovieSerializer):
     genres = serializers.SlugRelatedField(
         many=True, read_only=True, slug_field="name"
